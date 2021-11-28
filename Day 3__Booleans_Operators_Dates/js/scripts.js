@@ -182,9 +182,21 @@ let circum = 2 * PI * radius;
 console.log(Math.round(areaCircle), Math.round(circum));
 
 //5. Calculate the slope, x-intercept and y-intercept of y = 2x -2
-let x = Number(prompt('Enter the value of x')),
-y = 2 * x - 2;
-console.log(y); 
+
+let xIntercept;
+let yIntercept;
+let x1 = 0
+y1 = 2 * x1 - 2;
+xIntercept = `(${x1},${y1})`;
+let y2 = 0
+x2 = -2 / -2;
+yIntercept = `(${x2}, ${y2})`;
+let slope = (y2-y1)/(x2-x1);
+console.log(xIntercept);
+console.log(yIntercept);
+console.log(slope);
+
+
 
 //6. Slope is (m = y2-y1/x2-x1). Find the slope between point (2, 2) and point(6,10)
 let y1 =  parseInt(prompt('Enter 2')),
