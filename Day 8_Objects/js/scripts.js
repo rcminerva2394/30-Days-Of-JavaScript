@@ -443,14 +443,14 @@ const personAccount = {
           return totalExpenses;
         },
     
-     addIncome: function() {
-          let newIncomeName = 'tutorial'
-          let newIncomeValue = 300
+     addIncome: function(additionalIncome, incomeValue) {
+          let newIncomeName = additionalIncome
+          let newIncomeValue = incomeValue
           this.incomes[newIncomeName] = newIncomeValue
      },
-     addExpense: function(){
-          let newExpense = 'travel'
-          let newExpenseValue = 500
+     addExpense: function(additionalExpense, expenseValue){
+          let newExpense = additionalExpense
+          let newExpenseValue = expenseValue
           this.expenses[newExpense] = newExpenseValue
      },
      accountBalance: function() {
