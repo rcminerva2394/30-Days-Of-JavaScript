@@ -745,6 +745,7 @@ FREQUENCY DISTRIBUTION
 */
 
 
+
 const ages =  [31, 26, 34, 37, 27, 26, 32, 32, 26, 27, 27, 24, 32, 33, 27, 25, 26, 38, 37, 31, 34, 24, 33, 29, 26];
 let sortedAges = ages.sort(); //  [24, 24, 25, 26, 26, 26, 26, 26, 27, 27, 27, 27, 29, 31, 31, 32, 32, 32, 33, 33, 34, 34, 37, 37, 38]
 
@@ -784,20 +785,37 @@ let statistics = {
 
     freqntDist : function(arr) {   
 
-      let freqntDistOb = {}
+     /* first, create a unique array of numbers from the arr since we can't use Set
+        then, use filter to that unique arrray, count and push it
 
-        arr.forEach((val) => {
+     */
+      
+      //unique arr from arr
 
-           if(freqntDistOb.hasOwnProperty(val) === true) {
-             return freqntDistOb[val]++
-           } else {
-             freqntDistOb[val] = 1;
-           }
+          let uniqueArr = []  //  [24, 25, 26, 27, 29, 31, 32, 33, 34, 37, 38]
 
-          
-        })
+          arr.forEach((val) => { //let sortedAges  [24, 24, 25, 26, 26, 26, 26, 26, 27, 27, 27, 27, 29, 31, 31, 32, 32, 32, 33, 33, 34, 34, 37, 37, 38]
+         
+             if (uniqueArr.includes(val) === false) {
+                 uniqueArr.push(val)
+             }
 
-      return freqntDistOb;
+         })
+
+
+      //filter arr to see how many num from uniqueArr exists, then push it to new array
+      
+      let freqntDistArr = []
+
+      for (const num of uniqueArr) {
+          let filteredNum = arr.filter((number) => number === num)
+          freqntDistArr.push(`(${num} : ${filteredNum.length})`)
+      }
+
+
+
+      return freqntDistArr;
+
 
     },
 
@@ -875,8 +893,8 @@ let statistics = {
     },
 
     describe: function(arr) {
-      let frequencyDistri = JSON.stringify(this.freqntDist(arr));
-      return `Count: ${this.count(arr)} \nSum: ${this.sum(arr)} \nMin: ${this.min(arr)} \nMax: ${this.max(arr)} \nRange: ${this.range(arr)} \nMean: ${this.mean(arr)} \nMedian: ${this.median(arr)} \nMode: ${this.mode(arr)} \nVariance: ${this.variance(arr)} \nStandard Deviation: ${this.stdDev(arr)} \nFrequency Distribution: ${frequencyDistri}` 
+      
+      return `Count: ${this.count(arr)} \nSum: ${this.sum(arr)} \nMin: ${this.min(arr)} \nMax: ${this.max(arr)} \nRange: ${this.range(arr)} \nMean: ${this.mean(arr)} \nMedian: ${this.median(arr)} \nMode: ${this.mode(arr)} \nVariance: ${this.variance(arr)} \nStandard Deviation: ${this.stdDev(arr)} \nFrequency Distribution: ${this.freqntDist(arr)}` 
              
   
     }
@@ -896,3 +914,4 @@ console.log(statistics.variance(sortedAges));
 console.log(statistics.stdDev(sortedAges));
 console.log(statistics.percentile(30, sortedAges));
 console.log(statistics.describe(sortedAges));
+
