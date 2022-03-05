@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Day 23</title>
+</head>
+<body>
+  
+<div class= 'container-center'>
+  <p class="keyboard-key"></p>
+  <div id="keyboard-key-code"></div>
+</div>  
+
+<script>
+
+let container = document.querySelector('.container-center')
+  container.style.display = 'grid'
+  container.style.gap = '1px'
+
+  let typeKeyboardKey = document.querySelector('.keyboard-key')
+  typeKeyboardKey.innerHTML = "Press any keyboard <span class = 'key-word' > key </span> "
+  typeKeyboardKey.style.border = 'solid 1px'
+  typeKeyboardKey.style.textAlign = 'center'
+  typeKeyboardKey.style.fontSize= '30px'
+  typeKeyboardKey.style.padding = '2rem'
+  typeKeyboardKey.style.justifySelf = 'center'
+  
+
+  
+  let displayKeyboardKey = document.querySelector('#keyboard-key-code')
+  displayKeyboardKey.style.display = 'grid'
+  displayKeyboardKey.style.justifyContent = 'center'
+
+
+  
+  let youPressed;
+  let keyCodeIs;
+
+  document.body.addEventListener('keyup', e => {
+    displayKeyboardKey.innerHTML = ''
+    youPressed = document.createElement('p')
+   youPressed.innerHTML= `You pressed <span class = "key-name" style = "color: green; font-weight: bold; font-size: 50px">${e.key}</span>`
+
+   
+    youPressed.style.fontSize = '30px'
+    youPressed.style.border ='solid 1px'
+    youPressed.style.padding ='2rem'
+    youPressed.style.textAlign = 'center'
+    displayKeyboardKey.appendChild(youPressed)
+    keyCodeIs = document.createElement('p')
+    keyCodeIs.innerHTML = `${e.which}`
+    keyCodeIs.style.color = 'green'
+    keyCodeIs.style.fontWeight= 'bold'
+    keyCodeIs.style.fontSize = '50px'
+    keyCodeIs.style.border = 'solid 1px'
+    keyCodeIs.style.padding = '10px'
+    keyCodeIs.style.textAlign= 'center'
+    displayKeyboardKey.appendChild(keyCodeIs)
+  
+
+  })
+  
+</script> 
+
+</body>
+</html>
+
